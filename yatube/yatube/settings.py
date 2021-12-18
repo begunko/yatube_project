@@ -125,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us' # ru-RU не заыт поставит позе после проверки
+LANGUAGE_CODE = 'ru-RU' # ru-RU не заыт поставит позе после проверки
 
 TIME_ZONE = 'UTC'   #та е рен попрооват поставит +3
 
@@ -140,3 +140,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

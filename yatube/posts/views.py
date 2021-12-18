@@ -5,6 +5,7 @@ from django.shortcuts import render
 #Импортируем модель,чтобы обратиться к ней
 # from .models import Post
 
+app_name = 'posts_app'
 
 def index(request): 
     context = {
@@ -27,6 +28,6 @@ def group_posts(request,slug):
 
 def group_list(request):
     '''Здесь посты будут отфильтрованы по группам'''
-    template='post/group_list.html'
+    template='posts/group_list.html'
     return render(request, template)
     #return HttpResponse(f'Заметки по группам')
