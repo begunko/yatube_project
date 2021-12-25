@@ -1,14 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from posts.models import Group, Post
+
+POSTS_PER_PAGE: int = 10
 
 
 def index(request):
-    return HttpResponse('Главная страница')
+    latest = Post.objects.all()[:POSTS_PER_PAGE]
+    return render(request, 'index.html', {'posts': latest})
 
 
-def group_posts(reguest):
-    return HttpResponse('Список постов')
-
-
-def post_detail(reguest, slug):
-    return HttpResponse(f'Тут что то про пост пото поеняю {slug}')
+def group(request, slug):
+    group = get_object_or_404(Group, slug=slug)
+    posts = group.posts.all()[:POSTS_PER_PAGE]
+    return render(request, 'group.html', {'group': group, 'posts': posts})

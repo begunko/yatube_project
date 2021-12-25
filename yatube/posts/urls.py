@@ -1,8 +1,10 @@
 from django.urls import path
-from . import views
+from posts import views
+
+app_name = "my_posts"
 
 urlpatterns = [
-    path('', views.index),
-    path('group_posts/', views.group_posts),
-    path('post/<slug:slug>', views.post_detail),
+    path('', views.index, name='index'),
+    path('group/<slug:slug>/', views.group, name='my_group'),
+    # path('post/<slug:slug>', views.post_detail),
 ]
