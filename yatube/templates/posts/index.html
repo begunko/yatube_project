@@ -1,14 +1,18 @@
 <!-- templates/posts/index.html -->
 <!DOCTYPE html> 
-<html lang="ru">
-  <head>
-  </head>
-  <body>
-    <h1>Главная страница</h1>
-  </body>
-</html>
 
-<!-- {% extends 'base.html' %}
+{% extends "base.html" %}
+{% block title %}Последние обновления на сайте{% endblock %}
+{% block header %}Последние обновления на сайте{% endblock %}
 {% block content %}
-  Это главная страница проекта «Анфиса для друзей»!
-{% endblock %}  -->
+  {% for post in posts %}
+    <h3>
+      Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
+    </h3>
+    <p>{{ post.text|linebreaksbr }}</p>
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}
