@@ -6,7 +6,7 @@ POSTS_PER_PAGE: int = 10
 
 def index(request):
     latest = Post.objects.all()[:POSTS_PER_PAGE]
-    return render(request, 'index.html', {'posts': latest})
+    return render(request, 'posts/index.html', {'posts': latest})
 
 
 def group(request, slug):
